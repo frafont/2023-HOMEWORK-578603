@@ -1,5 +1,6 @@
 package it.uniroma3.diadia.giocatore;
 
+import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Borsa {
@@ -8,18 +9,19 @@ public class Borsa {
 	private int numeroAttrezzi;
 	private int pesoMax;
 	private int dimensione=10; // speriamo bastino...
+	private IOConsole console;
 	public Borsa() {
 	this(DEFAULT_PESO_MAX_BORSA);
-	
 	}
 	public Borsa(int pesoMax) {
 		this.pesoMax = pesoMax;
 		this.attrezzi = new Attrezzo[this.dimensione]; 
 		this.numeroAttrezzi = 0;
+		this.console= new IOConsole();
 	}
 	public boolean addAttrezzo(Attrezzo attrezzo) {
 		if (this.getPeso() + attrezzo.getPeso() > this.getPesoMax()) {
-			System.out.println("non c'è spazio nella borsa");
+			this.console.mostraMessaggio("non c'è spazio nella borsa");
 		return false;
 		}
 		if (this.numeroAttrezzi==this.dimensione)
@@ -64,9 +66,9 @@ public class Borsa {
 		return this.getAttrezzo(nomeAttrezzo)!=null;
 	}
 	public boolean removeAttrezzo(String nomeAttrezzo) {
-		System.out.println("rimozione in corso");
+		console.mostraMessaggio("rimozione in corso");
 		if(this.getPeso()==0) {
-			System.out.println("borsa vuota, niente da rimuovere");
+			console.mostraMessaggio("borsa vuota, niente da rimuovere");
 			return false;
 		}
 
@@ -75,7 +77,7 @@ public class Borsa {
 			if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
 				this.attrezzi[i]=null;
 				this.numeroAttrezzi--;
-				System.out.println("attrezzo rimosso dalla borsa");
+				console.mostraMessaggio("attrezzo rimosso dalla borsa");
 				
 				return true;
 					}

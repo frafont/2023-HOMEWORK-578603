@@ -7,15 +7,10 @@ import org.junit.jupiter.api.Test;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-
-
-
-
-
 public class StanzaTest {
 	
 	private Stanza stanza;
-	private Attrezzo spada;
+	private Attrezzo attrezzo;
 	
 	
 	@BeforeEach 
@@ -24,8 +19,8 @@ public class StanzaTest {
 		Stanza adiacente= new Stanza("biblioteca");
 		this.stanza.impostaStanzaAdiacente("nord", adiacente);
 		
-		spada = new Attrezzo("spada", 8);
-		this.stanza.addAttrezzo(spada);
+		this.attrezzo = new Attrezzo("spada", 8);
+		this.stanza.addAttrezzo(this.attrezzo);
 		
 	}
 	@Test 
@@ -39,12 +34,12 @@ public class StanzaTest {
 		}
 	@Test
 	public void testAddAttrezzo() {
-		assertTrue(this.stanza.addAttrezzo(spada));
+		assertTrue(this.stanza.addAttrezzo(this.attrezzo));
 		}
 	
 	@Test 
 	public void testRemoveAttrezzo() {
-		assertTrue(this.stanza.removeAttrezzo(spada));
+		assertTrue(this.stanza.removeAttrezzo(this.attrezzo));
 	}
 	@Test 
 	public void testHasAttrezzo() {

@@ -109,8 +109,6 @@ public class Stanza {
         		}
         	}
         	this.numeroAttrezzi++;
-        	System.out.println("attrezzo aggiunto alla stanza");
-        	System.out.println("numero attrezzi nella stanza:" + this.numeroAttrezzi);
         	return true;
         	}
         
