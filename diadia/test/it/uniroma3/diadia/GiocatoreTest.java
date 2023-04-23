@@ -29,7 +29,7 @@ class GiocatoreTest {
 	}
 	@Test 
 	void testInfoGiocatore() {
-		assertEquals("numero di cfu:20", this.giocatore.info());
+		assertEquals(20, this.giocatore.getCfu());
 	}
 
 }

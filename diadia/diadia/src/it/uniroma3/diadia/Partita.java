@@ -70,4 +70,11 @@ public class Partita {
 	public void setLab(Labirinto lab) {
 		this.lab = lab;
 	}
+
+	public boolean giocatoreIsVivo() {
+		if(this.player.getCfu()!=0)
+			return true;
+		else 
+		return false;
+	}
 }

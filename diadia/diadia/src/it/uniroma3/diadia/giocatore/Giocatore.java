@@ -20,7 +20,7 @@ public class Giocatore {
 		return this.borsa;
 	}
 	public String info() {
-		return "numero di cfu:" +this.getCfu();
+		return "numero di cfu:" +this.getCfu()+"\n"+ this.borsa.toString();
 		}
 	
 }
