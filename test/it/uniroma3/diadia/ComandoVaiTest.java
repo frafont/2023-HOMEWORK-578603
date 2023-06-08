@@ -2,9 +2,12 @@ package it.uniroma3.diadia;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.FileNotFoundException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.ambienti.Direzione;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.comandi.Comando;
@@ -14,14 +17,14 @@ class ComandoVaiTest {
 	private Comando comando;
 	private Partita partita;
 	@BeforeEach 
-	void setUp() {
+	void setUp() throws FileNotFoundException, FormatoFileNonValidoException {
 		this.comando=new ComandoVai();
 		Stanza stanzaCorrente= new Stanza("inizio");
-		Labirinto l= new Labirinto();
+		Labirinto l= Labirinto.newBuilder("labirinto1.txt").getLabirinto();
 		this.partita= new Partita(l);
 		this.partita.setStanzaCorrente(stanzaCorrente);
 		Stanza stanzaFinale= new Stanza("finale");
-		stanzaCorrente.impostaStanzaAdiacente("nord", stanzaFinale);
+		stanzaCorrente.impostaStanzaAdiacente(Direzione.nord, stanzaFinale);
 		this.comando.setParametro("nord");
 		this.comando.esegui(partita);
 		

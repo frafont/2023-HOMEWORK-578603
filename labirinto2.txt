@@ -1,0 +1,11 @@
+Stanze:Atrio,Biblioteca,Cassaforte
+Magica: 
+Buia: 
+Bloccata:Caveau est codice
+Inizio:Atrio
+Vincente:Biblioteca
+Mago:
+Cane:
+Strega:
+Attrezzi:martello 3 Atrio, codice 10 Atrio, soldi 12 Cassaforte
+Uscite:Atrio nord Biblioteca, Biblioteca sud Atrio, Atrio sud Caveau,Caveau est Cassaforte,Caveau nord Atrio,Cassaforte ovest Caveau

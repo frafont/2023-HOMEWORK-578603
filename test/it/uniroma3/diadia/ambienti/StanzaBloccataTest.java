@@ -13,28 +13,28 @@ class StanzaBloccataTest {
 	private Stanza bloccata;
 	@BeforeEach
 	void setUp() {
-		this.stanzaIniziale= new StanzaBloccata("banca","nord","codice");
+		this.stanzaIniziale= new StanzaBloccata("banca",Direzione.valueOf("nord"),"codice");
 		this.chiave=new Attrezzo("codice",15);
 		this.bloccata= new Stanza("caveau");
-		this.stanzaIniziale.impostaStanzaAdiacente("nord",this.bloccata);
-		this.stanzaIniziale.setDirezioneBloccata("nord");
+		this.stanzaIniziale.impostaStanzaAdiacente(Direzione.nord,this.bloccata);
+		this.stanzaIniziale.setDirezioneBloccata(Direzione.nord);
 		
 		
 	}
 	@Test
 	void testGetStanzaAdiacenteBloccata() {
-		assertEquals(this.stanzaIniziale,this.stanzaIniziale.getStanzaAdiacente("nord"));
+		assertEquals(this.stanzaIniziale,this.stanzaIniziale.getStanzaAdiacente(Direzione.nord));
 	}
 	@Test
 	void testGetStanzaAdiacenteSbloccata() {
 		this.stanzaIniziale.addAttrezzo(this.chiave);
-		assertEquals(this.bloccata,this.stanzaIniziale.getStanzaAdiacente("nord"));
+		assertEquals(this.bloccata,this.stanzaIniziale.getStanzaAdiacente(Direzione.nord));
 	}
 	@Test 
 	void testGetStanzaAdiacenteBloccata2() {
 		Attrezzo spada= new Attrezzo("spada",8);
 		this.stanzaIniziale.addAttrezzo(spada);
-		assertEquals(this.stanzaIniziale, this.stanzaIniziale.getStanzaAdiacente("nord"));
+		assertEquals(this.stanzaIniziale, this.stanzaIniziale.getStanzaAdiacente(Direzione.nord));
 	}
 	@Test
 	void testinfoDescrizioneinfoAttrezzo() {
@@ -45,7 +45,7 @@ class StanzaBloccataTest {
 	void testGetDescrizioneStanzaNonBloccata() {
 		Stanza stanzaTest= new Stanza("banca");
 		stanzaTest.addAttrezzo(chiave);
-		stanzaTest.impostaStanzaAdiacente("nord", this.bloccata);
+		stanzaTest.impostaStanzaAdiacente(Direzione.nord, this.bloccata);
 		this.stanzaIniziale.addAttrezzo(chiave);
 		assertEquals(stanzaTest.getDescrizione(),this.stanzaIniziale.getDescrizione());
 	}
@@ -53,8 +53,8 @@ class StanzaBloccataTest {
 	void testGetDescrizioneStanzaBloccata(){
 		StanzaBloccata stanzaTest= new StanzaBloccata("banca", null, null);
 		stanzaTest.setAttrezzoSbloccante("codice");
-		stanzaTest.setDirezioneBloccata("nord");
-		stanzaTest.impostaStanzaAdiacente("nord", this.bloccata);
+		stanzaTest.setDirezioneBloccata(Direzione.nord);
+		stanzaTest.impostaStanzaAdiacente(Direzione.nord, this.bloccata);
 		assertEquals(stanzaTest.getDescrizione(),this.stanzaIniziale.getDescrizione());
 		
 	}

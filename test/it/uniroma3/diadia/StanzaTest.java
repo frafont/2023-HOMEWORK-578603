@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.ambienti.Direzione;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -17,7 +18,7 @@ public class StanzaTest {
 	void setUp() {
 		this.stanza= new Stanza("atrio");
 		Stanza adiacente= new Stanza("biblioteca");
-		this.stanza.impostaStanzaAdiacente("nord", adiacente);
+		this.stanza.impostaStanzaAdiacente(Direzione.valueOf("nord"), adiacente);
 		
 		this.attrezzo = new Attrezzo("spada", 8);
 		this.stanza.addAttrezzo(this.attrezzo);
@@ -30,7 +31,7 @@ public class StanzaTest {
 
 	@Test
 	public void testGetStanzaAdiacente() {
-		assertEquals("biblioteca", this.stanza.getStanzaAdiacente("nord").getNome());
+		assertEquals("biblioteca", this.stanza.getStanzaAdiacente(Direzione.valueOf("nord")).getNome());
 		}
 	@Test
 	public void testAddAttrezzo() {

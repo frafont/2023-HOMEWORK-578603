@@ -2,6 +2,8 @@ package it.uniroma3.diadia;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.FileNotFoundException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,11 +21,11 @@ class ComandoPosaTest {
 	private Attrezzo attrezzo;
 	private Borsa borsa;
 	@BeforeEach
-	void setUp() {
+	void setUp() throws FileNotFoundException, FormatoFileNonValidoException {
 		this.comando= new ComandoPosa();
 		this.stanza= new Stanza("stanza");
 		this.attrezzo= new Attrezzo("penna",2);
-		Labirinto l= new Labirinto();
+		Labirinto l= Labirinto.newBuilder("labirinto1.txt").getLabirinto();
 		Partita partita= new Partita(l);
 		partita.setStanzaCorrente(this.stanza);
 		this.borsa= partita.getGiocatore().getBorsa();
